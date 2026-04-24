@@ -138,11 +138,11 @@ ggradar <- function(plot.data,
   if (length(axis.labels) != ncol(plot.data) - 1) {
     stop("'axis.labels' contains the wrong number of axis labels", call. = FALSE)
   }
-  if (min(plot.data[, -1]) < centre.y) {
+  if (min(plot.data[, -1], na.rm = T) < centre.y) {
     stop("plot.data' contains value(s) < centre.y", call. = FALSE)
   }
   
-  if (max(plot.data[, -1]) > grid.max) {
+  if (max(plot.data[, -1], na.rm = T) > grid.max) {
     plot.data[, -1] <- (plot.data[, -1]/max(plot.data[, -1]))*grid.max
     warning("'plot.data' contains value(s) > grid.max, data scaled to grid.max", call. = FALSE)
   }
